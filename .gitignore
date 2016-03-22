@@ -1,0 +1,30 @@
+/download
+/eclipseBin
+
+## gradle
+/build
+
+## ForgeGradle
+/run
+
+## eclipse
+/eclipse
+/.settings
+/.metadata
+/.classpath
+/.project
+/bin
+
+## intellij
+/out
+/.idea
+/*.iml
+/*.ipr
+/*.iws
+/atlassian-ide-plugin.xml
+
+## gedit
+*~
+
+## translation reports
+resources/assets/enderio/lang/*.lang.txt
