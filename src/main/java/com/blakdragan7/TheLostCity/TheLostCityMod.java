@@ -1,5 +1,6 @@
 package com.blakdragan7.TheLostCity;
 
+import com.blakdragan7.TheLostCity.blocks.TLCBlockLoader;
 import com.blakdragan7.TheLostCity.items.TLCItemLoader;
 import com.blakdragan7.TheLostCity.misc.TLCProxy;
 import com.blakdragan7.TheLostCity.misc.TLCProxyClient;
@@ -26,6 +27,9 @@ public class TheLostCityMod
     {
 		TLCItemLoader.LoadItems();
 		TLCItemLoader.RegisterItems();
+		
+		TLCBlockLoader.loadBlocks();
+		TLCBlockLoader.registerBlocks();
     }
     
     @EventHandler
