@@ -1,0 +1,8 @@
+<xml>
+	<package>com.blakdragan7.TheLostCity</package>
+	<root_folder>src/main</root_folder>
+	<use_loader>True</use_loader>
+	<item_loader>TLCItemLoader</item_loader>
+	<block_loader>TLCBlockLoader</block_loader>
+	<mod_id>tlc</mod_id>
+</xml>
