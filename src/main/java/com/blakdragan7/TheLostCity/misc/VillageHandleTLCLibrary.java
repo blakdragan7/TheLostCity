@@ -15,21 +15,18 @@ public class VillageHandleTLCLibrary implements IVillageCreationHandler {
 
 	@Override
 	public PieceWeight getVillagePieceWeight(Random random, int i) {
-		// TODO Auto-generated method stub
 		return new StructureVillagePieces.PieceWeight(VillageComponentTLCLibrary.class, 15, i + random.nextInt(3));
 	}
 
 	@Override
 	public Class<?> getComponentClass() {
-		// TODO Auto-generated method stub
 		return VillageComponentTLCLibrary.class;
 	}
 
 	@Override
 	public Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces,
 			Random random, int p1, int p2, int p3, EnumFacing facing, int p5) {
-		// TODO Auto-generated method stub
-		return new VillageComponentTLCLibrary(); 
+		return VillageComponentTLCLibrary.buildComponent(startPiece, p1, p2, p5, facing);
 	}
 
 }
