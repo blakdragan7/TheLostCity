@@ -38,13 +38,13 @@ public class TheLostCityMod
 		TLCBlockLoader.registerBlocks();
 		
 		villageHandle = new VillageHandleTLCLibrary();
+		
+		sidedProxy.SidedEvent();
     }
     
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-		sidedProxy.SidedEvent();
-		
 		MapGenStructureIO.registerStructureComponent(VillageComponentTLCLibrary.class, "tlc:libary"); 
 		VillagerRegistry.instance().registerVillageCreationHandler(villageHandle);
     }

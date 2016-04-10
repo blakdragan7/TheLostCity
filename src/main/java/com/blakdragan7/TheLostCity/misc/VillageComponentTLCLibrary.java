@@ -2,12 +2,12 @@ package com.blakdragan7.TheLostCity.misc;
 
 import java.util.Random;
 
-import com.blakdragan7.TheLostCity.blocks.TLCBlockLoader;
-
-import net.minecraft.block.material.Material;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockPos;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
@@ -47,11 +47,17 @@ public class VillageComponentTLCLibrary extends StructureVillagePieces.Village{
                 return true;
             }
 
-            this.boundingBox.offset(0, this.field_143015_k - this.boundingBox.maxY + 6 - 1, 0);
+            this.boundingBox.minY = this.field_143015_k;
         }
 		
-		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 4, 3, 4, Blocks.stone.getDefaultState(), Blocks.stone.getDefaultState(), false);
-
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 4, 3, 4, Blocks.glass.getDefaultState(), Blocks.air.getDefaultState(), false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 2, 0, 2 , 2 ,Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
+		this.setBlockState(worldIn, Blocks.planks.getDefaultState(), 0, 0, 2, structureBoundingBoxIn);
+		
+		this.placeDoorCurrentPosition(worldIn, structureBoundingBoxIn, randomIn, 0, 1, 2, this.coordBaseMode);
+		
+		this.setBlockState(worldIn, Blocks.chest.getDefaultState(), 2, 1, 2, structureBoundingBoxIn);
+		
 		return false;
 	}
 

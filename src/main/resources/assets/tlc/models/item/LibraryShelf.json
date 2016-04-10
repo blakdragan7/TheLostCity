@@ -1,5 +1,5 @@
 {
-    "parent":"tlc:block/LibrarySide",
+    "parent":"tlc:block/LibraryShelf",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

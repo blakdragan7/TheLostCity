@@ -6,31 +6,31 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TLCBlockLoader {
 
-	public static TLCLibrarySideBlock libraryBlock;
+	public static TLCLibraryShelf libraryShelf;
 	
 	public static void loadBlocks()
 	{
-		libraryBlock = new TLCLibrarySideBlock("LibrarySide");
+		libraryShelf = new TLCLibraryShelf("LibraryShelf");
 	}
 	
 	public static void registerBlocks()
 	{
-		GameRegistry.registerBlock(libraryBlock, "LibrarySide");
+		GameRegistry.registerBlock(libraryShelf, "LibraryShelf");
 	}
 	
 	public static void registerBlockRenders()
 	{
-		registerBlockRender(libraryBlock);
+		registerBlockRender(libraryShelf);
 	}
 	
 	public static void registerBlockRender(Block block)
 	{
 		Item blockItem = Item.getItemFromBlock(block);
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-	    .register(blockItem, 0, new ModelResourceLocation(TheLostCityMod.MODID + ':' + block.getUnlocalizedName().substring(5), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(blockItem, 0, new ModelResourceLocation(TheLostCityMod.MODID + ':' + blockItem.getUnlocalizedName().substring(5),"inventory"));
 	}
 }
