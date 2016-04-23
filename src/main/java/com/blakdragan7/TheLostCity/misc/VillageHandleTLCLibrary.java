@@ -26,7 +26,7 @@ public class VillageHandleTLCLibrary implements IVillageCreationHandler {
 	@Override
 	public Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces,
 			Random random, int p1, int p2, int p3, EnumFacing facing, int p5) {
-		return VillageComponentTLCLibrary.buildComponent(startPiece, p1, p2, p5, facing);
+		return VillageComponentTLCLibrary.buildComponent(startPiece, pieces,p1, p2, /*Used to be p5*/p3,p5, facing);
 	}
 
 }
