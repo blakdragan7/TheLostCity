@@ -3,6 +3,8 @@ package com.blakdragan7.TheLostCity.misc;
 import java.util.List;
 import java.util.Random;
 
+import com.blakdragan7.TheLostCity.blocks.TLCBlockLoader;
+
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -119,8 +121,26 @@ public class VillageComponentTLCLibrary extends StructureVillagePieces.Village
                 return true;
             }
 
-            this.boundingBox.minY = this.field_143015_k;
+            this.boundingBox.minY = this.field_143015_k -1;
         }
+		
+		EnumFacing LeftFacing;
+		EnumFacing RightFacing;
+		
+		switch(this.coordBaseMode)
+		{
+		case EAST:
+		case WEST:
+			RightFacing = EnumFacing.NORTH;
+			LeftFacing = EnumFacing.SOUTH;
+			break;
+		case SOUTH:
+		case NORTH:
+		default:
+			LeftFacing = EnumFacing.EAST;
+			RightFacing = EnumFacing.WEST;
+			break;
+		};
 		
 		structureBoundingBoxIn = this.boundingBox;
 		
@@ -140,12 +160,32 @@ public class VillageComponentTLCLibrary extends StructureVillagePieces.Village
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 0, 8, 6, 4, 8,  Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), true);
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 0, 0, 6, 4, 0,  Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), true);
 		
-		//this.setBlockState(worldIn, Blocks.planks.getDefaultState(), 0, 0, 2, structureBoundingBoxIn);
-		//this.setBlockState(worldIn, Blocks.planks.getDefaultState(), 0, 0, 2, structureBoundingBoxIn);
+		IBlockState shelfState = TLCBlockLoader.libraryShelf.getDefaultState();
+		
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 1, 1, 2, 7, shelfState, shelfState, false);
+		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 1, 1, 5, 2, 7, shelfState, shelfState, false);
+		
+		this.setBlockState(worldIn, Blocks.oak_fence.getDefaultState(), 2, 1, 3, structureBoundingBoxIn);
+		this.setBlockState(worldIn, Blocks.oak_fence.getDefaultState(), 4, 1, 5, structureBoundingBoxIn);
+		this.setBlockState(worldIn, Blocks.oak_fence.getDefaultState(), 2, 1, 7, structureBoundingBoxIn);
+
+		this.setBlockState(worldIn, Blocks.wooden_pressure_plate.getDefaultState(), 2, 2, 3, structureBoundingBoxIn);
+		this.setBlockState(worldIn, Blocks.wooden_pressure_plate.getDefaultState(), 4, 2, 5, structureBoundingBoxIn);
+		this.setBlockState(worldIn, Blocks.wooden_pressure_plate.getDefaultState(), 2, 2, 7, structureBoundingBoxIn);
+		
+		IBlockState rightStairs = Blocks.oak_stairs.getDefaultState().withProperty(BlockStairs.FACING, RightFacing);
+		IBlockState leftStairs = Blocks.oak_stairs.getDefaultState().withProperty(BlockStairs.FACING, LeftFacing);;
+		
+		this.setBlockState(worldIn, rightStairs, 1, 1, 3, structureBoundingBoxIn);
+		this.setBlockState(worldIn, leftStairs, 5, 1, 5, structureBoundingBoxIn);
+		this.setBlockState(worldIn, rightStairs, 1, 1, 7, structureBoundingBoxIn);
+		
+		this.setBlockState(worldIn, Blocks.air.getDefaultState(), 1, 2, 3, structureBoundingBoxIn);
+		this.setBlockState(worldIn, Blocks.air.getDefaultState(), 5, 2, 5, structureBoundingBoxIn);
+		this.setBlockState(worldIn, Blocks.air.getDefaultState(), 1, 2, 7, structureBoundingBoxIn);
 		
 		this.placeDoorCurrentPosition(worldIn, structureBoundingBoxIn, randomIn, 3, 1, 0, this.coordBaseMode == EnumFacing.WEST ||this.coordBaseMode == EnumFacing.EAST ? EnumFacing.SOUTH : EnumFacing.WEST );
-
-		//this.setBlockState(worldIn, Blocks.chest.getDefaultState(), 2, 1, 2, structureBoundingBoxIn);
+		this.setBlockState(worldIn, Blocks.stone_stairs.getDefaultState().withProperty(BlockStairs.FACING, this.coordBaseMode), 3, 0, -1, structureBoundingBoxIn);
 		
 		return false;
 	}
