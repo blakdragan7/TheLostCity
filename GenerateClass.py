@@ -95,10 +95,6 @@ def main():
 			print ' Could Not Create Class File !!'
 		classFile.write(getStringForItem(classname,package.text))
 		classFile.close()
-		
-		if useLoader:
-			loaderFile = open(path+'/'+classname+'.java','w')
-			loaderFile.
 	
 
 if __name__ == '__main__':

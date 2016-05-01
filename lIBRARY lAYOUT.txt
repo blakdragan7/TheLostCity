@@ -1,0 +1,69 @@
+6x9x7
+
+1
+	all wood planks
+	
+2
+	L  C  D  D  C  L
+	C  S  A  A  S  C
+	C  S  A  A  S  C
+	C  S  A  F  ST C
+	C  S  A  A  S  C
+	C  S  A  A  S  C
+	C  ST F  A  S  C
+	C  S  A  A  S  C
+	L  C  C  C  C  L
+3
+	L  C  D  D  C  L
+	C  S  A  A  S  C
+	P  S  A  A  S  P
+	P  A  A  PL A  P
+	P  S  A  A  S  P
+	P  S  A  A  A  P
+	P  A  PL A  S  P
+	C  S  A  A  S  C
+	L  C  C  C  C  L
+4
+	L  C  C  C  C  L
+	C  A  A  A  A  C
+	P  A  A  A  A  P
+	P  A  A  A  A  P
+	P  A  A  A  A  P
+	P  A  A  A  A  P
+	P  A  A  A  A  P
+	C  A  A  A  A  C
+	L  C  C  C  C  L
+	
+5
+	L  C  C  C  C  L
+	C  A  A  A  A  C
+	C  A  A  A  A  C
+	C  A  A  A  A  C
+	C  A  A  A  A  C
+	C  A  A  A  A  C
+	C  A  A  A  A  C
+	C  A  A  A  A  C
+	L  C  C  C  C  L
+	
+6
+	BS BS BS BS BS BS
+	BS A  A  A  A  BS
+	BS A  A  A  A  BS
+	BS A  A  A  A  BS
+	BS A  A  A  A  BS
+	BS A  A  A  A  BS
+	BS A  A  A  A  BS
+	BS A  A  A  A  BS
+	BS BS BS BS BS BS
+	
+7
+	A   A  A  A  A A
+	A  BS BS BS BS A
+	A  BS  B  B BS A
+	A  BS  B  B BS A
+	A  BS  B  B BS A
+	A  BS  B  B BS A
+	A  BS  B  B BS A
+	A  BS BS BS BS A
+	A  A  A  A  A  A
+	
