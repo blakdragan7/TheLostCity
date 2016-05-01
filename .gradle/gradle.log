@@ -1,7 +1,5 @@
-This mapping 'stable_20' was designed for MC 1.8.8! Use at your own peril.This mapping 'stable_20' was designed for MC 1.8.8! Use at your own peril.
-
 #################################################
-         ForgeGradle 2.1-SNAPSHOT-9e8f067        
+         ForgeGradle 2.1-SNAPSHOT-da90449        
   https://github.com/MinecraftForge/ForgeGradle  
 #################################################
                Powered by MCP unknown               
@@ -12,34 +10,48 @@ This mapping 'stable_20' was designed for MC 1.8.8! Use at your own peril.This m
 :deobfCompileDummyTask
 :deobfProvidedDummyTask
 :getVersionJson
-:extractUserdev UP-TO-DATE
+:extractUserdev
+Download http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.9-12.16.0.1868-1.9/forge-1.9-12.16.0.1868-1.9.pom
+Download http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.9-12.16.0.1868-1.9/forge-1.9-12.16.0.1868-1.9-userdev.jar
 :extractDependencyATs SKIPPED
-:extractMcpData SKIPPED
-:extractMcpMappings SKIPPED
-:genSrgs SKIPPED
-:downloadClient SKIPPED
-:downloadServer SKIPPED
-:splitServerJar SKIPPED
-:mergeJars SKIPPED
-:deobfMcSRG SKIPPED
-:decompileMc SKIPPED
-:fixMcSources SKIPPED
-:applySourcePatches SKIPPED
-:remapMcSources SKIPPED
-:recompileMc SKIPPED
-:extractNatives SKIPPED
-:getAssetIndex UP-TO-DATE
+:extractMcpData
+Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcp/1.9/mcp-1.9-srg.zip
+:extractMcpMappings
+Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcp_snapshot/20160312-1.9/mcp_snapshot-20160312-1.9.zip
+:genSrgs
+:downloadClient
+:downloadServer
+:splitServerJar
+:mergeJars
+:deobfMcSRG
+Applying SpecialSource...
+Applying Exceptor...
+:decompileMc
+Download https://libraries.minecraft.net/com/mojang/authlib/1.5.22/authlib-1.5.22.pom
+Download https://libraries.minecraft.net/com/mojang/realms/1.8.7/realms-1.8.7.pom
+Download https://libraries.minecraft.net/com/mojang/authlib/1.5.22/authlib-1.5.22.jar
+Download https://libraries.minecraft.net/com/mojang/realms/1.8.7/realms-1.8.7.jar
+:fixMcSources
+:applySourcePatches
+:remapMcSources
+:recompileMc
+:extractNatives
+:getAssetIndex
 :getAssets
-Current status: 435/734   59%
+Current status: 194/1049   18%
+Current status: 435/1049   41%
+Current status: 667/1049   63%
+Current status: 908/1049   86%
 :makeStart
 :setupDecompWorkspace
 :eclipseClasspath
+Download https://libraries.minecraft.net/com/mojang/authlib/1.5.22/authlib-1.5.22-sources.jar
 :eclipseJdt
 :eclipseProject
-:makeEclipseCleanRunClient UP-TO-DATE
-:makeEclipseCleanRunServer UP-TO-DATE
+:makeEclipseCleanRunClient
+:makeEclipseCleanRunServer
 :eclipse
 
 BUILD SUCCESSFUL
 
-Total time: 18.542 secs
+Total time: 3 mins 37.842 secs

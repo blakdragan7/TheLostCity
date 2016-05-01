@@ -20,6 +20,8 @@ public class VillageComponentTLCLibrary extends StructureVillagePieces.Village
 	static final int sizey = 8;
 	static final int sizez = 10;
 	
+	public EnumFacing facing;
+	
 	public static VillageComponentTLCLibrary buildComponent(StructureVillagePieces.Start start,@SuppressWarnings("rawtypes") List pieces,int x,int y,int z,int type,EnumFacing facing)
 	{	
 		StructureBoundingBox _boundingBox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, sizex, sizey, sizez, facing);
@@ -37,7 +39,8 @@ public class VillageComponentTLCLibrary extends StructureVillagePieces.Village
 	public VillageComponentTLCLibrary(StructureVillagePieces.Start start,StructureBoundingBox box, int type,EnumFacing facing)
     {
         super(start, type);
-        this.coordBaseMode = facing;
+        this.func_186164_a(facing);
+        this.facing = facing;
         this.boundingBox = box;
     }
 	
@@ -53,22 +56,22 @@ public class VillageComponentTLCLibrary extends StructureVillagePieces.Village
 		switch(front)
 		{
 		case EAST:
-			forward = eastFacing;
-			back = westFacing;
-			right = northFacing;
-			left = southFacing;
+			left = eastFacing;
+			right = westFacing;
+			back = southFacing;
+			forward = northFacing;
 			break;
 		case WEST:
-			back = eastFacing;
-			forward = westFacing;
-			right = northFacing;
-			left = southFacing;
+			left = eastFacing;
+			right = westFacing;
+			back = southFacing;
+			forward = northFacing;
 			break;
 		case SOUTH:
 			left = eastFacing;
 			right = westFacing;
-			back = northFacing;
-			forward = southFacing;
+			forward = northFacing;
+			back = southFacing;
 			break;
 		case NORTH:
 			left = eastFacing;
@@ -127,7 +130,7 @@ public class VillageComponentTLCLibrary extends StructureVillagePieces.Village
 		EnumFacing LeftFacing;
 		EnumFacing RightFacing;
 		
-		switch(this.coordBaseMode)
+		switch(this.facing)
 		{
 		case EAST:
 		case WEST:
@@ -148,9 +151,9 @@ public class VillageComponentTLCLibrary extends StructureVillagePieces.Village
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 6, 5, 8,  Blocks.cobblestone.getDefaultState(), Blocks.cobblestone.getDefaultState(), false);
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 5, 7, 7,  Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 5, 0, 7,  Blocks.planks.getDefaultState(), Blocks.planks.getDefaultState(), false);
-		this.SetStairsFacingInward(worldIn, this.coordBaseMode, 0, 0, 6, 8, 5,structureBoundingBoxIn);
+		this.SetStairsFacingInward(worldIn, this.facing, 0, 0, 6, 8, 5,structureBoundingBoxIn);
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 5, 1, 5, 5, 7,  Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
-		this.SetStairsFacingInward(worldIn, this.coordBaseMode, 1, 1, 5, 7, 6,structureBoundingBoxIn);
+		this.SetStairsFacingInward(worldIn, this.facing, 1, 1, 5, 7, 6,structureBoundingBoxIn);
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 6, 2, 4, 6, 6,  Blocks.brick_block.getDefaultState(), Blocks.brick_block.getDefaultState(), false);
 		
 		this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 2, 2, 6, 3, 6,  Blocks.glass_pane.getDefaultState(), Blocks.glass_pane.getDefaultState(), true);
@@ -184,8 +187,8 @@ public class VillageComponentTLCLibrary extends StructureVillagePieces.Village
 		this.setBlockState(worldIn, Blocks.air.getDefaultState(), 5, 2, 5, structureBoundingBoxIn);
 		this.setBlockState(worldIn, Blocks.air.getDefaultState(), 1, 2, 7, structureBoundingBoxIn);
 		
-		this.placeDoorCurrentPosition(worldIn, structureBoundingBoxIn, randomIn, 3, 1, 0, this.coordBaseMode == EnumFacing.WEST ||this.coordBaseMode == EnumFacing.EAST ? EnumFacing.SOUTH : EnumFacing.WEST );
-		this.setBlockState(worldIn, Blocks.stone_stairs.getDefaultState().withProperty(BlockStairs.FACING, this.coordBaseMode), 3, 0, -1, structureBoundingBoxIn);
+		this.placeDoorCurrentPosition(worldIn, structureBoundingBoxIn, randomIn, 3, 1, 0, this.facing == EnumFacing.WEST ||this.facing == EnumFacing.EAST ? EnumFacing.SOUTH : EnumFacing.WEST );
+		this.setBlockState(worldIn, Blocks.stone_stairs.getDefaultState().withProperty(BlockStairs.FACING, this.facing), 3, 0, -1, structureBoundingBoxIn);
 		
 		return false;
 	}

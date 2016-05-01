@@ -5,7 +5,7 @@ import com.blakdragan7.TheLostCity.blocks.TLCBlockLoader;
 import com.blakdragan7.TheLostCity.items.TLCItemLoader;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 
 public class TLCProxyClient extends TLCProxy{
