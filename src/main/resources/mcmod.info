@@ -1,8 +1,8 @@
 [
 {
-  "modid": "tlc",
-  "name": "The Lost City",
-  "description": "Mod about exploring The Lost City Of Atlantiss !",
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "Example placeholder mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
