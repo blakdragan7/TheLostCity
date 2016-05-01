@@ -5,6 +5,7 @@ import com.blakdragan7.TheLostCity.TheLostCityMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TLCItemLoader 
@@ -32,6 +33,6 @@ public class TLCItemLoader
 	
 	public static void registerItemRender(Item item)
 	{
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(TheLostCityMod.MODID + ':' + item.getUnlocalizedName().substring(5),"inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(TheLostCityMod.MODID + ':' + item.getUnlocalizedName().substring(5),"inventory"));
 	}
 }
