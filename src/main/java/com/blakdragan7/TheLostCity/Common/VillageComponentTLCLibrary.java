@@ -1,9 +1,9 @@
-package com.blakdragan7.TheLostCity.misc;
+package com.blakdragan7.TheLostCity.Common;
 
 import java.util.List;
 import java.util.Random;
 
-import com.blakdragan7.TheLostCity.blocks.TLCBlocks;
+import com.blakdragan7.TheLostCity.Common.Block.TLCBlocks;
 
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;

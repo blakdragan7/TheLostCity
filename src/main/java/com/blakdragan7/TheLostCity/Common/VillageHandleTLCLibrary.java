@@ -1,4 +1,4 @@
-package com.blakdragan7.TheLostCity.misc;
+package com.blakdragan7.TheLostCity.Common;
 
 import java.util.List;
 import java.util.Random;

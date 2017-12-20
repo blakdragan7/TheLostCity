@@ -1,7 +1,7 @@
-package com.blakdragan7.TheLostCity.blocks;
+package com.blakdragan7.TheLostCity.Common.Block;
 
 import com.blakdragan7.TheLostCity.TheLostCityMod;
-import com.blakdragan7.TheLostCity.items.TLCItems;
+import com.blakdragan7.TheLostCity.Common.Items.TLCItems;
 
 import net.minecraft.block.BlockBookshelf;
 import net.minecraft.block.state.IBlockState;

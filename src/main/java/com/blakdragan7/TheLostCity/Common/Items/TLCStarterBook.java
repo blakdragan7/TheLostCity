@@ -1,4 +1,4 @@
-package com.blakdragan7.TheLostCity.items;
+package com.blakdragan7.TheLostCity.Common.Items;
 
 import com.blakdragan7.TheLostCity.TheLostCityMod;
 

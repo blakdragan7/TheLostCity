@@ -1,9 +1,12 @@
-package com.blakdragan7.TheLostCity.misc;
+package com.blakdragan7.TheLostCity.Common;
 
-import com.blakdragan7.TheLostCity.blocks.TLCBlocks;
-import com.blakdragan7.TheLostCity.items.TLCItems;
+import com.blakdragan7.TheLostCity.TheLostCityMod;
+import com.blakdragan7.TheLostCity.Common.Block.TLCBlocks;
+import com.blakdragan7.TheLostCity.Common.Items.TLCItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -14,7 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber
 public class TLCProxy  
 {
-	public static final String ProxyName = "com.blakdragan7.TheLostCity.misc.TLCProxy";
+	public static final String ProxyName = "com.blakdragan7.TheLostCity.Common.TLCProxy";
 	
 	public void preInit(FMLPreInitializationEvent e) 
 	{
