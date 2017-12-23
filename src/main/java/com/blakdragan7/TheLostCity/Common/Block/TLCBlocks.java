@@ -1,6 +1,7 @@
 package com.blakdragan7.TheLostCity.Common.Block;
 
 import com.blakdragan7.TheLostCity.TheLostCityMod;
+import com.blakdragan7.TheLostCity.Common.Block.BlockCrystalAccelerant;
 import com.blakdragan7.TheLostCity.Common.Block.Tile.TileEntityCrystal;
 
 import net.minecraft.block.Block;
@@ -15,18 +16,23 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class TLCBlocks {
 
 	@GameRegistry.ObjectHolder("tlc:libraryshelf")
-	public static TLCLibraryShelf libraryShelf;
+	public static BlockLibraryShelf libraryShelf;
 	
 	@GameRegistry.ObjectHolder("tlc:crystalblock")
-	public static CrystalBlock crystalBlock;
+	public static BlockCrystal crystalBlock;
+	
+	@GameRegistry.ObjectHolder("tlc:CrystalAccelerant")
+	public static BlockCrystalAccelerant crystalAccelerant;
 	
 	public static void loadBlocks(RegistryEvent.Register<Block> event)
 	{
-		libraryShelf = new TLCLibraryShelf();
-		crystalBlock = new CrystalBlock();
+		libraryShelf = new BlockLibraryShelf();
+		crystalBlock = new BlockCrystal();
+		crystalAccelerant = new BlockCrystalAccelerant();
 		
 		event.getRegistry().register(libraryShelf);
 		event.getRegistry().register(crystalBlock);
+		event.getRegistry().register(crystalAccelerant);
 		
 		GameRegistry.registerTileEntity(TileEntityCrystal.class, TheLostCityMod.MODID + ":crystaltileentity");
 	}
@@ -35,12 +41,14 @@ public class TLCBlocks {
 	{	
 		event.getRegistry().register(new ItemBlock(libraryShelf).setRegistryName(libraryShelf.getRegistryName()));
 		event.getRegistry().register(new ItemBlock(crystalBlock).setRegistryName(crystalBlock.getRegistryName()));
+		event.getRegistry().register(new ItemBlock(crystalAccelerant).setRegistryName(crystalAccelerant.getRegistryName()));
 	}
 	
 	public static void registerBlockRenders()
 	{
 		registerBlockRender(libraryShelf);
 		crystalBlock.InitModel();
+		registerBlockRender(crystalAccelerant);
 	}
 	
 	public static void registerBlockRender(Block block)

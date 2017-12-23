@@ -23,9 +23,9 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class CrystalBlock extends Block implements ITileEntityProvider {
+public class BlockCrystal extends Block implements ITileEntityProvider {
 
-	public CrystalBlock() {
+	public BlockCrystal() {
 		super(Material.ROCK);
 		setRegistryName("crystalblock");
 		setUnlocalizedName(TheLostCityMod.MODID + ":crystalblock");

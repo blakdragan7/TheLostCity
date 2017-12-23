@@ -12,14 +12,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class TLCItems
 {
 	@GameRegistry.ObjectHolder("tlc:starter_book")
-	public static TLCStarterBook tlcStarterBook;
+	public static ItemTLCStarterBook tlcStarterBook;
 	@GameRegistry.ObjectHolder("tlc:_GateKey_necklace")
-	public static TLCGateKey tlcGateKey;
+	public static ItemTLCGateKey tlcGateKey;
 	
 	public static void LoadItems(RegistryEvent.Register<Item> event) 
 	{
-		tlcStarterBook = new TLCStarterBook("starter_book");
-		tlcGateKey = new TLCGateKey();
+		tlcStarterBook = new ItemTLCStarterBook("starter_book");
+		tlcGateKey = new ItemTLCGateKey();
 		
 		event.getRegistry().register(tlcStarterBook);
 		event.getRegistry().register(tlcGateKey);

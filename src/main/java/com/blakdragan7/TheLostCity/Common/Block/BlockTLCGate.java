@@ -6,9 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class TLCGateBlock extends Block{
+public class BlockTLCGate extends Block{
 
-	public TLCGateBlock() {
+	public BlockTLCGate() {
 		super(Material.FIRE);
 		this.setRegistryName("TLCGate");
 		this.setUnlocalizedName(TheLostCityMod.MODID + ":TLCGate");

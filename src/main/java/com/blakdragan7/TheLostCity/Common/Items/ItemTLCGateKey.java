@@ -18,8 +18,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.Console;
 
-public class TLCGateKey extends Item{
-	public TLCGateKey(){
+public class ItemTLCGateKey extends Item{
+	public ItemTLCGateKey(){
 		super();
 		this.setRegistryName("_GateKey_necklace");
 		this.setUnlocalizedName(TheLostCityMod.MODID + ":_GateKey_necklace");
