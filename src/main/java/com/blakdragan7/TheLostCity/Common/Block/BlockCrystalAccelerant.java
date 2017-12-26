@@ -3,6 +3,10 @@ package com.blakdragan7.TheLostCity.Common.Block;
 import java.util.Random;
 
 import com.blakdragan7.TheLostCity.TheLostCityMod;
+import com.blakdragan7.TheLostCity.Client.Render.Particle.ParticleBase;
+import com.blakdragan7.TheLostCity.Client.Render.Particle.ParticleRenderServer;
+import com.blakdragan7.TheLostCity.Client.Render.Particle.TLCParticleEffects;
+import com.blakdragan7.TheLostCity.Client.Render.Particle.ParticleBase.RenderTarget;
 import com.blakdragan7.TheLostCity.Common.Items.TLCItems;
 
 import net.minecraft.block.Block;
@@ -23,6 +27,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -148,7 +153,8 @@ public class BlockCrystalAccelerant extends BlockRedstoneWire{
             float f1 = f * 0.6F + 0.4F;
             float f2 = Math.max(0.0F, f * f * 0.7F - 0.5F);
             float f3 = Math.max(0.0F, f * f * 0.6F - 0.7F);
-            worldIn.spawnParticle(EnumParticleTypes.FLAME, d0, d1, d2, (double)f1, (double)f2, (double)f3);
+            ParticleBase p = new ParticleBase(RenderTarget.TARGET_MAINLOOP, 1.0F,new Vec3d(d0,d1+2.0,d2),new Vec3d(1,1,1));
+            ParticleRenderServer.GetDefaultServer().AddParticle(p);
         }
     }
 }
