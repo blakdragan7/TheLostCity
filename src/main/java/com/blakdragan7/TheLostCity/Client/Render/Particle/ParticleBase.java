@@ -5,7 +5,7 @@ import com.blakdragan7.TheLostCity.Client.Render.Util.GLRenderUtil;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.Vec3d;
 
-public class ParticleBase {
+public abstract class ParticleBase {
 	public RenderTarget renderTarget;
 	protected float timeToLive;
 	protected float timeAlive;
@@ -88,11 +88,7 @@ public class ParticleBase {
 		removeFlag = false;
 	}
 	
-	public void render(float deltaTime)
-	{
-		GLRenderUtil.GetDefaultRenderer().renderSquare(position, 1,1, EnumFacing.SOUTH, deltaTime);
-//		GL3RenderUtil.GetDefaultRenderer().renderSquareFacingCamera(position, scale, rotation,deltaTime);
-	}
+	public abstract void render(float deltaTime);
 	
 	public RenderTarget GetRenderTarget()
 	{

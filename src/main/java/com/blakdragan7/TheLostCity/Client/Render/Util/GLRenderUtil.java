@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.Vec2f;
 import net.minecraft.util.math.Vec3d;
 
 public class GLRenderUtil {
@@ -23,17 +24,103 @@ public class GLRenderUtil {
 		if(instance == null)instance = new GLRenderUtil();
 		return instance;
 	}
-	private double InterpDouble(double Start, double End, double alpha)
+	public static double InterpDouble(double Start, double End, double alpha)
 	{
 		return Start + (End - Start) * alpha;
 	}
-	private float InterpFloat(float Start, float End, float alpha)
+	public static float InterpFloat(float Start, float End, float alpha)
 	{
 		return Start + (End - Start) * alpha;
 	}
-	private Vec3d InterpVec(Vec3d Start,Vec3d End,float alpha)
+	public static Vec3d InterpVec(Vec3d Start,Vec3d End,float alpha)
 	{
 		return new Vec3d(Start.x + (End.x - Start.x) * alpha, Start.y + (End.y - Start.y) * alpha, Start.z + (End.z - Start.z) * alpha);
+	}
+	
+	public void renderVariableSizeSquare(Vec3d position,BufferBuilder buf, double sizeh,double sizev, EnumFacing facing, float partialTicks)
+	{
+		
+		
+		Entity e = Minecraft.getMinecraft().getRenderViewEntity();
+        if(e == null) {
+            e = Minecraft.getMinecraft().player;
+        }
+				
+        double EntityPositionX = InterpDouble(e.lastTickPosX,e.posX,partialTicks); 
+        double EntityPositionY = InterpDouble(e.lastTickPosY,e.posY,partialTicks);
+        double EntityPositionZ = InterpDouble(e.lastTickPosZ,e.posZ,partialTicks);
+		
+        double deltaPosX = position.x - EntityPositionX;
+        double deltaPosY = position.y - EntityPositionY;
+        double deltaPosZ = position.z - EntityPositionZ;
+		
+        switch(facing)
+		{
+		case WEST:
+		case EAST:
+			buf.pos(deltaPosX, deltaPosY + sizev, deltaPosZ).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			buf.pos(deltaPosX, deltaPosY + sizev, deltaPosZ+sizeh).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ+sizeh).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			break;
+		case SOUTH:
+		case NORTH:
+			buf.pos(deltaPosX, deltaPosY + sizev, deltaPosZ).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			buf.pos(deltaPosX+sizeh, deltaPosY + sizev, deltaPosZ).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			buf.pos(deltaPosX+sizeh, deltaPosY, deltaPosZ).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			break;
+		case UP:
+		case DOWN:
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ + sizev).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			buf.pos(deltaPosX+sizeh, deltaPosY, deltaPosZ + sizev).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			buf.pos(deltaPosX+sizeh, deltaPosY, deltaPosZ).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ).color(1.0F,0.0F,0.0F,1.0F).endVertex();
+			break;
+		}
+	}
+	
+	public void renderVariableSizeTextureSquare(Vec3d position,Color color,TextureCoords uv,BufferBuilder buf, double sizeh,double sizev, EnumFacing facing, float partialTicks)
+	{
+		
+		
+		Entity e = Minecraft.getMinecraft().getRenderViewEntity();
+        if(e == null) {
+            e = Minecraft.getMinecraft().player;
+        }
+				
+        double EntityPositionX = InterpDouble(e.lastTickPosX,e.posX,partialTicks); 
+        double EntityPositionY = InterpDouble(e.lastTickPosY,e.posY,partialTicks);
+        double EntityPositionZ = InterpDouble(e.lastTickPosZ,e.posZ,partialTicks);
+		
+        double deltaPosX = position.x - EntityPositionX;
+        double deltaPosY = position.y - EntityPositionY;
+        double deltaPosZ = position.z - EntityPositionZ;
+		
+        switch(facing)
+		{
+		case WEST:
+		case EAST:
+			buf.pos(deltaPosX, deltaPosY + sizev, deltaPosZ).tex(uv.umin,uv.vmin).color(color.r,color.g,color.b,color.a).endVertex();
+			buf.pos(deltaPosX, deltaPosY + sizev, deltaPosZ+sizeh).tex(uv.umax,uv.vmin).color(color.r,color.g,color.b,color.a).endVertex();
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ+sizeh).tex(uv.umax,uv.vmax).color(color.r,color.g,color.b,color.a).endVertex();
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ).tex(uv.umin,uv.vmax).color(color.r,color.g,color.b,color.a).endVertex();
+			break;
+		case SOUTH:
+		case NORTH:
+			buf.pos(deltaPosX, deltaPosY + sizev, deltaPosZ).tex(uv.umin,uv.vmin).color(color.r,color.g,color.b,color.a).endVertex();
+			buf.pos(deltaPosX+sizeh, deltaPosY + sizev, deltaPosZ).tex(uv.umax,uv.vmin).color(color.r,color.g,color.b,color.a).endVertex();
+			buf.pos(deltaPosX+sizeh, deltaPosY, deltaPosZ).tex(uv.umax,uv.vmax).color(color.r,color.g,color.b,color.a).endVertex();
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ).tex(uv.umin,uv.vmax).color(color.r,color.g,color.b,color.a).endVertex();
+			break;
+		case UP:
+		case DOWN:
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ + sizev).tex(uv.umin,uv.vmax).color(color.r,color.g,color.b,color.a).endVertex();
+			buf.pos(deltaPosX+sizeh, deltaPosY, deltaPosZ + sizev).tex(uv.umax,uv.vmax).color(color.r,color.g,color.b,color.a).endVertex();
+			buf.pos(deltaPosX+sizeh, deltaPosY, deltaPosZ).tex(uv.umax,uv.vmin).color(color.r,color.g,color.b,color.a).endVertex();
+			buf.pos(deltaPosX, deltaPosY, deltaPosZ).tex(uv.umin,uv.vmin).color(color.r,color.g,color.b,color.a).endVertex();
+			break;
+		}
 	}
 	
 	public void renderSquare(Vec3d position,float sizeh,float sizev, EnumFacing facing,float partialTicks)
@@ -141,5 +228,28 @@ public class GLRenderUtil {
         vb.pos(v3x, v3y, v3z).tex(1,0).endVertex();
         vb.pos(v4x, v4y, v4z).tex(0,0).endVertex();
         t.draw();
+	}
+	
+	public static class Color
+	{
+		public float r,g,b,a;
+		public Color(float r,float g,float b,float a)
+		{
+			this.r = r;
+			this.g = g;
+			this.b = a;
+			this.a = a;
+		}
+	}
+	public static class TextureCoords
+	{
+		public float umin,vmin,umax,vmax;
+		public TextureCoords(float umin,float vmin,float umax,float vmax)
+		{
+			this.umin = umin;
+			this.vmin = vmin;
+			this.umax = umax;
+			this. vmax = vmax;
+		}
 	}
 }

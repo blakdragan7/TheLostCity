@@ -1,4 +1,4 @@
-package com.blakdragan7.TheLostCity.Client.Render.Particle;
+package com.blakdragan7.TheLostCity.Client.Render.RenderServers;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -6,8 +6,10 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
+import com.blakdragan7.TheLostCity.Client.Render.Particle.ParticleBase;
 import com.blakdragan7.TheLostCity.Client.Render.Particle.ParticleBase.RenderTarget;
 import com.blakdragan7.TheLostCity.Client.Render.Util.GLRenderUtil;
+import com.blakdragan7.TheLostCity.Client.Render.Util.TextureUtil;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.math.Vec3d;
@@ -63,6 +65,7 @@ public class ParticleRenderServer {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onRender(RenderWorldLastEvent event) {
+    	if(TextureUtil.hasLoadedAllTextures == false)return;
     	
     	float partialTick = event.getPartialTicks();
     	
@@ -97,7 +100,7 @@ public class ParticleRenderServer {
         	return;
         }
         long deltaTime = currentTime - lastUpdate;
-        float deltaTimef = deltaTime / 1000;
+        float deltaTimef = (float)deltaTime / 1000.0F;
         Iterator<ParticleBase> iter = particlesToUpdate.iterator();
         while(iter.hasNext())
         {

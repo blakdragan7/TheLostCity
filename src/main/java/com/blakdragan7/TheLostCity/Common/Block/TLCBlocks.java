@@ -49,6 +49,7 @@ public class TLCBlocks {
 		registerBlockRender(libraryShelf);
 		crystalBlock.InitModel();
 		registerBlockRender(crystalAccelerant);
+		
 	}
 	
 	public static void registerBlockRender(Block block)

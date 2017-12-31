@@ -1,14 +1,16 @@
 package com.blakdragan7.TheLostCity.Client;
 
 import com.blakdragan7.TheLostCity.TheLostCityMod;
-import com.blakdragan7.TheLostCity.Client.Render.Particle.ParticleRenderServer;
+import com.blakdragan7.TheLostCity.Client.Render.RenderServers.*;
 import com.blakdragan7.TheLostCity.Client.Render.Util.GLRenderUtil;
+import com.blakdragan7.TheLostCity.Client.Render.Util.TextureUtil;
 import com.blakdragan7.TheLostCity.Common.TLCProxy;
 import com.blakdragan7.TheLostCity.Common.Block.TLCBlocks;
 import com.blakdragan7.TheLostCity.Common.Items.TLCItems;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -29,6 +31,11 @@ public class TLCProxyClient extends TLCProxy {
         OBJLoader.INSTANCE.addDomain(TheLostCityMod.MODID);
         
         MinecraftForge.EVENT_BUS.register(ParticleRenderServer.GetDefaultServer());
+        MinecraftForge.EVENT_BUS.register(ProceduralMeshRenderServer.GetDefaultServer());
+        
+        ((IReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(TextureUtil.getReloadInstace());
+        
+        TextureUtil.LoadAllTextures();
 	}
 
     @SubscribeEvent
