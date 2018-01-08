@@ -97,7 +97,7 @@ public class BlockCrystalAccelerant extends Block{
         state = state.withProperty(EAST, this.getAttachPosition(worldIn, pos, EnumFacing.EAST));
         state = state.withProperty(NORTH, this.getAttachPosition(worldIn, pos, EnumFacing.NORTH));
         state = state.withProperty(SOUTH, this.getAttachPosition(worldIn, pos, EnumFacing.SOUTH));
-        state = state.withProperty(IS_ACTIVATED,false);
+        
         return state;
     }
 	
@@ -123,7 +123,6 @@ public class BlockCrystalAccelerant extends Block{
 		        		IBlockState myState = worldIn.getBlockState(pos).withProperty(IS_ACTIVATED, active);
 		            	worldIn.setBlockState(pos, myState,2);
 		            	
-		            	
 		            	AccelerantGlowEffect ae = new AccelerantGlowEffect(worldIn,pos);
 	            		ProceduralMeshRenderServer.GetDefaultServer().RegisterUser(pos,ae);
 		            	
@@ -133,6 +132,8 @@ public class BlockCrystalAccelerant extends Block{
 		            		IBlockState localState = worldIn.getBlockState(nextPos);
 		            		if(localState.getBlock() == this && localState.getValue(IS_ACTIVATED) == false)
 		            		{
+		            			AccelerantGlowEffect ae2 = new AccelerantGlowEffect(worldIn,nextPos);
+			            		ProceduralMeshRenderServer.GetDefaultServer().RegisterUser(nextPos,ae2);
 		            			worldIn.setBlockState(nextPos, localState.withProperty(IS_ACTIVATED, active),2);
 		            			worldIn.notifyNeighborsOfStateChange(nextPos, this, false);
 		            		}
@@ -611,6 +612,10 @@ public class BlockCrystalAccelerant extends Block{
         else if (Blocks.OBSERVER == blockState.getBlock())
         {
             return side == blockState.getValue(BlockObserver.FACING);
+        }
+        else if (TLCBlocks.crystalAccelerant == block)
+        {
+        	return true;
         }
         else
         {

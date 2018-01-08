@@ -33,6 +33,8 @@ public class AccelerantGlowEffect extends TexturedProceduralMesh implements ITic
 	private BlockPos pos;
 	private float currentTime;
 	
+	private float quad_size = 0.5F;
+	
 	private boolean OnlyOneTrue(boolean first,boolean second,boolean third,boolean fourth)
 	{
 		if( first && !(second || third || fourth))
@@ -60,7 +62,7 @@ public class AccelerantGlowEffect extends TexturedProceduralMesh implements ITic
 		c.b = 0;
 		c.g = 0;
 	}
-	
+	//1117 120
 	public void GenerateListFromStartingPos(BlockPos pos)
 	{
 		// currently reders double quads needs to be fixed
@@ -79,28 +81,28 @@ public class AccelerantGlowEffect extends TexturedProceduralMesh implements ITic
 				 if(OnlyOneTrue(EastConnection,WestConnection,NorthConnection,SouthConnection))
 					 AllPositions.add(new Vec3d(CenterPos.x-0.5,CenterPos.y,CenterPos.z));
 				 else  AllPositions.add(CenterPos);
-				 AllPositions.add(new Vec3d(CenterPos.x+1,CenterPos.y,CenterPos.z));
+				 AllPositions.add(new Vec3d(CenterPos.x+quad_size,CenterPos.y,CenterPos.z));
 			 }
 			 if(WestConnection)
 			 {
 				 if(OnlyOneTrue(EastConnection,WestConnection,NorthConnection,SouthConnection))
 					 AllPositions.add(new Vec3d(CenterPos.x+0.5,CenterPos.y,CenterPos.z));
 				 else  AllPositions.add(CenterPos);
-				 AllPositions.add(new Vec3d(CenterPos.x-1,CenterPos.y,CenterPos.z));
+				 AllPositions.add(new Vec3d(CenterPos.x-quad_size,CenterPos.y,CenterPos.z));
 			 }
 			 if(NorthConnection)
 			 {
 				 if(OnlyOneTrue(EastConnection,WestConnection,NorthConnection,SouthConnection))
 					 AllPositions.add(new Vec3d(CenterPos.x,CenterPos.y,CenterPos.z+0.5));
 				 else  AllPositions.add(CenterPos);
-				 AllPositions.add(new Vec3d(CenterPos.x,CenterPos.y,CenterPos.z-1));
+				 AllPositions.add(new Vec3d(CenterPos.x,CenterPos.y,CenterPos.z-quad_size));
 			 }
 			 if(SouthConnection)
 			 {
 				 if(OnlyOneTrue(EastConnection,WestConnection,NorthConnection,SouthConnection))
 					 AllPositions.add(new Vec3d(CenterPos.x,CenterPos.y,CenterPos.z-0.5));
 				 else  AllPositions.add(CenterPos);
-				 AllPositions.add(new Vec3d(CenterPos.x,CenterPos.y,CenterPos.z+1));
+				 AllPositions.add(new Vec3d(CenterPos.x,CenterPos.y,CenterPos.z+quad_size));
 			 }
 		 }
 	}
